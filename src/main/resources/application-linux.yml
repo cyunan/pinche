@@ -1,0 +1,49 @@
+server:
+  port: 8888
+#  servlet:
+#    context-path: /pinche
+
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/laoliu?serverTimezone=UTC&&characterEncoding=utf-8
+    username: root
+    password: root
+  #静态资源访问
+  resources:
+    add-mappings: true
+    static-locations: classpath\:/META-INF/resources/,classpath\:/resources/,classpath\:/static/,classpath\:/public/,file\:${file.truepath}${file.staticpath}
+
+  servlet:
+    multipart:
+      #最大文件大小。值可以使用后缀“MB”或“KB”。指示兆字节或千字节大小。(-1为无限制)
+      max-file-size: -1
+      # 最大请求大小可以是mb也可以是kb
+      max-request-size: -1
+
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+file:
+  #静态资源对外暴露的访问路径
+
+  staticAccessPath: http://114.55.249.135:8888/image_file/
+  # linux下的文件路径配置
+  uploadFolder: /home/tomuser/apps/image_file/
+
+  #头像
+  staticAccessPath_touxiang: http://114.55.249.135:8888/touxiang/
+  uploadFolder_touxiang: /home/tomuser/apps/touxiang/
+
+  #学号
+  staticAccessPath_pascard: http://114.55.249.135:8888/pas_card/
+  uploadFolder_pascard: /home/tomuser/apps/pas_card/
+
+  #身份证驾驶证图片
+  staticAccessPath_driver: http://114.55.249.135:8888/driver/
+  uploadFolder_driver: /home/tomuser/apps/driver/
+
